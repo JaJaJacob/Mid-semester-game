@@ -23,7 +23,7 @@ namespace zadaniena5
             RulesList.Add(" ");
             RulesList.Add("3. Aby potwierdzić wybranie danego pola wciśnij klawisz Enter");
             RulesList.Add(" ");
-            RulesList.Add("4. Aby wylosować pozycję gracze podają dwie liczby z przedziału od 10-99. Gracz będący bliżej liczby wylosowanej zaczyna");
+            RulesList.Add("4. Aby wylosować pozycję gracze podają dwie liczby z przedziału od 10-999. Gracz będący bliżej liczby wylosowanej zaczyna");
             RulesList.Add(" ");
             MenuList.Add("Menu ruchów:");
             MenuList.Add(" ");
@@ -35,7 +35,7 @@ namespace zadaniena5
             MenuList.Add("Czy gracze akceptują zasady? [Y/n]");
 
             GameModesList.Add("1. Granie z graczem");
-            GameModesList.Add("2. Granie z botem");
+            //GameModesList.Add("2. Granie z botem");
         }
         public void PrepareGame()
         {

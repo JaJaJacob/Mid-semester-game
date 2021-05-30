@@ -160,8 +160,8 @@ namespace zadaniena5
 
             if (p.Ready())
             {
-                Console.SetCursorPosition((Console.WindowWidth - 16) / 2, (Console.WindowHeight - 8) / 2);
-                Console.WriteLine("Wybierz typ gry:");
+                //Console.SetCursorPosition((Console.WindowWidth - 16) / 2, (Console.WindowHeight - 8) / 2);
+                //Console.WriteLine("Wybierz typ gry:");
 
                 if (r1.SwitchingGameTypeMenu() == 1)
                 {
@@ -209,8 +209,9 @@ namespace zadaniena5
                     }
 
                     p.WinningAlert();
-        
+
                 }
+                /*
                 else
                 {
                     p.SetNicknamesAndSizeGameMode2();
@@ -262,6 +263,9 @@ namespace zadaniena5
                     p.WinningAlert();
 
                 }
+            }
+                
+            */
             }
             else
             {

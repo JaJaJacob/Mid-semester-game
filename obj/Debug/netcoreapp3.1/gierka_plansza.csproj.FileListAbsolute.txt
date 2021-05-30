@@ -1,0 +1,13 @@
+C:\Users\j. Designer\Source\Repos\JaJaJacob\mid-semester-game\bin\Debug\netcoreapp3.1\gierka_plansza.exe
+C:\Users\j. Designer\Source\Repos\JaJaJacob\mid-semester-game\bin\Debug\netcoreapp3.1\gierka_plansza.deps.json
+C:\Users\j. Designer\Source\Repos\JaJaJacob\mid-semester-game\bin\Debug\netcoreapp3.1\gierka_plansza.runtimeconfig.json
+C:\Users\j. Designer\Source\Repos\JaJaJacob\mid-semester-game\bin\Debug\netcoreapp3.1\gierka_plansza.runtimeconfig.dev.json
+C:\Users\j. Designer\Source\Repos\JaJaJacob\mid-semester-game\bin\Debug\netcoreapp3.1\gierka_plansza.dll
+C:\Users\j. Designer\Source\Repos\JaJaJacob\mid-semester-game\bin\Debug\netcoreapp3.1\gierka_plansza.pdb
+C:\Users\j. Designer\Source\Repos\JaJaJacob\mid-semester-game\obj\Debug\netcoreapp3.1\gierka_plansza.csprojAssemblyReference.cache
+C:\Users\j. Designer\Source\Repos\JaJaJacob\mid-semester-game\obj\Debug\netcoreapp3.1\gierka_plansza.AssemblyInfoInputs.cache
+C:\Users\j. Designer\Source\Repos\JaJaJacob\mid-semester-game\obj\Debug\netcoreapp3.1\gierka_plansza.AssemblyInfo.cs
+C:\Users\j. Designer\Source\Repos\JaJaJacob\mid-semester-game\obj\Debug\netcoreapp3.1\gierka_plansza.csproj.CoreCompileInputs.cache
+C:\Users\j. Designer\Source\Repos\JaJaJacob\mid-semester-game\obj\Debug\netcoreapp3.1\gierka_plansza.dll
+C:\Users\j. Designer\Source\Repos\JaJaJacob\mid-semester-game\obj\Debug\netcoreapp3.1\gierka_plansza.pdb
+C:\Users\j. Designer\Source\Repos\JaJaJacob\mid-semester-game\obj\Debug\netcoreapp3.1\gierka_plansza.genruntimeconfig.cache
