@@ -35,7 +35,7 @@ namespace zadaniena5
             MenuList.Add("Czy gracze akceptują zasady? [Y/n]");
 
             GameModesList.Add("1. Granie z graczem");
-            //GameModesList.Add("2. Granie z botem");
+            GameModesList.Add("2. Granie z botem");
         }
         public void PrepareGame()
         {
