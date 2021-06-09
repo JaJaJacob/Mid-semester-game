@@ -25,6 +25,8 @@ namespace zadaniena5
             RulesList.Add(" ");
             RulesList.Add("4. Aby wylosować pozycję gracze podają dwie liczby z przedziału od 10-999. Gracz będący bliżej liczby wylosowanej zaczyna");
             RulesList.Add(" ");
+            RulesList.Add("5. Obejrzyj poradnik online pod tym linkiem: https://youtu.be/ABCdrribjuc");
+            RulesList.Add(" ");
             MenuList.Add("Menu ruchów:");
             MenuList.Add(" ");
             MenuList.Add("[Strzałka w górę]   -  idź o 1 wzwyż");
@@ -34,6 +36,7 @@ namespace zadaniena5
             MenuList.Add(" ");
             MenuList.Add("Czy gracze akceptują zasady? [Y/n]");
 
+            //GameModesList.Add("0. Obejrzyj poradnik online");
             GameModesList.Add("1. Granie z graczem");
             GameModesList.Add("2. Granie z botem");
         }

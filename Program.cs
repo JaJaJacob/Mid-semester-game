@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 
 namespace zadaniena5
@@ -210,7 +211,7 @@ namespace zadaniena5
 
                     p.WinningAlert();
 
-                }             
+                }    
                 else
                 {
                     p.SetNicknamesAndSizeGameMode2();
