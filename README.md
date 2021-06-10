@@ -1,5 +1,5 @@
 # mid-semester-game
-Connect the dots game (POLISH LANGUAGE)
+Connect the dots game or Shannon Switching Game (POLISH LANGUAGE)
 
 Player 1 has to connect dots from bottom to top, Player 2 from left to right
 
