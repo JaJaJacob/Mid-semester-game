@@ -283,6 +283,47 @@ namespace zadaniena5
             }
             while (!(k.Key == ConsoleKey.Enter));
         }
+
+        public void MoveBotRight(int X, int Y, Piece Pi)
+        {
+            Battlefield1[X, Y + 1] = Pi;
+            Battlefield2[X, Y + 1] = Pi.Character;
+            Battlefield1[X, Y ].ConnectRightPiece(Battlefield1[X, Y + 2]);
+            Battlefield1[X, Y + 2].ConnectLeftPiece(Battlefield1[X, Y]);
+            Battlefield1[X, Y ].ConnectEdges(Battlefield1[X, Y + 2].IsEdge1, Battlefield1[X, Y + 2].IsEdge2);
+            Battlefield1[X, Y + 2].ConnectEdges(Battlefield1[X, Y].IsEdge1, Battlefield1[X, Y].IsEdge2);
+        }
+
+        public void MoveBotLeft(int X, int Y, Piece Pi)
+        {
+            Battlefield1[X, Y - 1] = Pi;
+            Battlefield2[X, Y - 1] = Pi.Character;
+            Battlefield1[X, Y].ConnectLeftPiece(Battlefield1[X, Y - 2]);
+            Battlefield1[X, Y - 2].ConnectRightPiece(Battlefield1[X, Y]);
+            Battlefield1[X, Y].ConnectEdges(Battlefield1[X, Y - 2].IsEdge1, Battlefield1[X, Y - 2].IsEdge2);
+            Battlefield1[X, Y - 2].ConnectEdges(Battlefield1[X, Y].IsEdge1, Battlefield1[X, Y].IsEdge2);
+        }
+
+        public void MoveBotUp(int X, int Y, Piece Pi)
+        {
+            Battlefield1[X - 1, Y] = Pi;
+            Battlefield2[X - 1, Y] = Pi.Character;
+            Battlefield1[X, Y].ConnectUpperPiece(Battlefield1[X - 2, Y]);
+            Battlefield1[X - 2, Y].ConnectLowerPiece(Battlefield1[X, Y]);
+            Battlefield1[X, Y].ConnectEdges(Battlefield1[X - 2, Y].IsEdge1, Battlefield1[X - 2, Y].IsEdge2);
+            Battlefield1[X - 2, Y].ConnectEdges(Battlefield1[X, Y].IsEdge1, Battlefield1[X, Y].IsEdge2);
+        }
+
+        public void MoveBotDown(int X, int Y, Piece Pi)
+        {
+            Battlefield1[X + 1, Y] = Pi;
+            Battlefield2[X + 1, Y] = Pi.Character;
+            Battlefield1[X, Y].ConnectLowerPiece(Battlefield1[X + 2, Y]);
+            Battlefield1[X + 2, Y].ConnectUpperPiece(Battlefield1[X, Y]);
+            Battlefield1[X, Y].ConnectEdges(Battlefield1[X + 2, Y].IsEdge1, Battlefield1[X + 2, Y].IsEdge2);
+            Battlefield1[X + 2, Y].ConnectEdges(Battlefield1[X, Y].IsEdge1, Battlefield1[X, Y].IsEdge2);
+        }
+
         public void SetMovePlayer(int[] tab, Player Pl)
         {
             Player Tmp = Pl;
@@ -425,12 +466,8 @@ namespace zadaniena5
                             XD = StartLeftTopX;
                             YD = StartLeftTopY;
 
-                            Battlefield1[StartLeftTopX, StartLeftTopY + 1] = Pi;
-                            Battlefield2[StartLeftTopX, StartLeftTopY + 1] = Pi.Character;
-                            Battlefield1[StartLeftTopX, StartLeftTopY].ConnectRightPiece(Battlefield1[StartLeftTopX, StartLeftTopY + 2]);
-                            Battlefield1[StartLeftTopX, StartLeftTopY + 2].ConnectLeftPiece(Battlefield1[StartLeftTopX, StartLeftTopY]);
-                            Battlefield1[StartLeftTopX, StartLeftTopY].ConnectEdges(Battlefield1[StartLeftTopX, StartLeftTopY + 2].IsEdge1, Battlefield1[StartLeftTopX, StartLeftTopY + 2].IsEdge2);
-                            Battlefield1[StartLeftTopX, StartLeftTopY + 2].ConnectEdges(Battlefield1[StartLeftTopX, StartLeftTopY].IsEdge1, Battlefield1[StartLeftTopX, StartLeftTopY].IsEdge2);
+                            MoveBotRight(StartLeftTopX, StartLeftTopY, Pi);
+
                             StartLeftTopY += 2;
                             BotWantRightBlocked = 0;
                         }
@@ -445,13 +482,7 @@ namespace zadaniena5
                                     XD = StartLeftTopX;
                                     YD = StartLeftTopY;
 
-                                    Battlefield1[StartLeftTopX - 1, StartLeftTopY] = Pi;
-                                    Battlefield2[StartLeftTopX - 1, StartLeftTopY] = Pi.Character;
-                                    Battlefield1[StartLeftTopX, StartLeftTopY].ConnectUpperPiece(Battlefield1[StartLeftTopX - 2, StartLeftTopY]);
-                                    Battlefield1[StartLeftTopX - 2, StartLeftTopY].ConnectLowerPiece(Battlefield1[StartLeftTopX, StartLeftTopY]);
-
-                                    Battlefield1[StartLeftTopX, StartLeftTopY].ConnectEdges(Battlefield1[StartLeftTopX - 2, StartLeftTopY].IsEdge1, Battlefield1[StartLeftTopX - 2, StartLeftTopY].IsEdge2);
-                                    Battlefield1[StartLeftTopX - 2, StartLeftTopY].ConnectEdges(Battlefield1[StartLeftTopX, StartLeftTopY].IsEdge1, Battlefield1[StartLeftTopX, StartLeftTopY].IsEdge2);
+                                    MoveBotUp(StartLeftTopX, StartLeftTopY, Pi);
 
                                     StartLeftTopX -= 2;
                                 }
@@ -485,13 +516,8 @@ namespace zadaniena5
                                 XD = StartRightTopX;
                                 YD = StartRightTopY;
 
-                                Battlefield1[StartRightTopX, StartRightTopY - 1] = Pi;
-                                Battlefield2[StartRightTopX, StartRightTopY - 1] = Pi.Character;
-                                Battlefield1[StartRightTopX, StartRightTopY].ConnectRightPiece(Battlefield1[StartRightTopX, StartRightTopY - 2]);
-                                Battlefield1[StartRightTopX, StartRightTopY - 2].ConnectLeftPiece(Battlefield1[StartRightTopX, StartRightTopY]);
+                                MoveBotLeft(StartRightBottomX, StartRightBottomY, Pi);
 
-                                Battlefield1[StartRightTopX, StartRightTopY].ConnectEdges(Battlefield1[StartRightTopX, StartRightTopY - 2].IsEdge1, Battlefield1[StartRightTopX, StartRightTopY - 2].IsEdge2);
-                                Battlefield1[StartRightTopX, StartRightTopY - 2].ConnectEdges(Battlefield1[StartRightTopX, StartRightTopY].IsEdge1, Battlefield1[StartRightTopX, StartRightTopY].IsEdge2);
                                 StartRightTopY -= 2;
                             }
                             else if (Battlefield1[StartRightTopX, StartRightTopY - 1] != null)
@@ -519,13 +545,7 @@ namespace zadaniena5
                                         XD = StartLeftTopX;
                                         YD = StartLeftTopY;
 
-                                        Battlefield1[StartLeftTopX, StartLeftTopY + 1] = Pi;
-                                        Battlefield2[StartLeftTopX, StartLeftTopY + 1] = Pi.Character;
-                                        Battlefield1[StartLeftTopX, StartLeftTopY].ConnectLeftPiece(Battlefield1[StartLeftTopX, StartLeftTopY + 2]);
-                                        Battlefield1[StartLeftTopX, StartLeftTopY + 2].ConnectRightPiece(Battlefield1[StartLeftTopX, StartLeftTopY]);
-
-                                        Battlefield1[StartLeftTopX, StartLeftTopY].ConnectEdges(Battlefield1[StartLeftTopX, StartLeftTopY - 2].IsEdge1, Battlefield1[StartLeftTopX, StartLeftTopY - 2].IsEdge2);
-                                        Battlefield1[StartLeftTopX, StartLeftTopY - 2].ConnectEdges(Battlefield1[StartLeftTopX, StartLeftTopY].IsEdge1, Battlefield1[StartLeftTopX, StartLeftTopY].IsEdge2);
+                                        MoveBotRight(StartLeftTopX, StartLeftTopY, Pi);
 
                                         StartLeftTopY += 2;
                                         hop = 0;
@@ -538,13 +558,8 @@ namespace zadaniena5
                                         XD = StartRightTopX;
                                         YD = StartRightTopY;
 
-                                        Battlefield1[StartRightTopX - 1, StartRightTopY] = Pi;
-                                        Battlefield2[StartRightTopX - 1, StartRightTopY] = Pi.Character;
-                                        Battlefield1[StartRightTopX, StartRightTopY].ConnectUpperPiece(Battlefield1[StartRightTopX - 2, StartRightTopY]);
-                                        Battlefield1[StartRightTopX - 2, StartRightTopY].ConnectLowerPiece(Battlefield1[StartRightTopX, StartRightTopY]);
+                                        MoveBotUp(StartRightTopX, StartRightTopY, Pi);
 
-                                        Battlefield1[StartRightTopX, StartRightTopY].ConnectEdges(Battlefield1[StartRightTopX - 2, StartRightTopY].IsEdge1, Battlefield1[StartRightTopX - 2, StartRightTopY].IsEdge2);
-                                        Battlefield1[StartRightTopX - 2, StartRightTopY].ConnectEdges(Battlefield1[StartRightTopX, StartRightTopY].IsEdge1, Battlefield1[StartRightTopX, StartRightTopY].IsEdge2);
                                         StartRightTopX -= 2;
                                     }
                                 }
@@ -561,13 +576,7 @@ namespace zadaniena5
                             XD = StartLeftBottomX;
                             YD = StartLeftBottomY;
 
-                            Battlefield1[StartLeftBottomX, StartLeftBottomY + 1] = Pi;
-                            Battlefield2[StartLeftBottomX, StartLeftBottomY + 1] = Pi.Character;
-                            Battlefield1[StartLeftBottomX, StartLeftBottomY].ConnectRightPiece(Battlefield1[StartLeftBottomX, StartLeftBottomY + 2]);
-                            Battlefield1[StartLeftBottomX, StartLeftBottomY + 2].ConnectLeftPiece(Battlefield1[StartLeftBottomX, StartLeftBottomY]);
-
-                            Battlefield1[StartLeftBottomX, StartLeftBottomY].ConnectEdges(Battlefield1[StartLeftBottomX, StartLeftBottomY + 2].IsEdge1, Battlefield1[StartLeftBottomX, StartLeftBottomY + 2].IsEdge2);
-                            Battlefield1[StartLeftBottomX, StartLeftBottomY + 2].ConnectEdges(Battlefield1[StartLeftBottomX, StartLeftBottomY].IsEdge1, Battlefield1[StartLeftBottomX, StartLeftBottomY].IsEdge2);
+                            MoveBotRight(StartLeftBottomX, StartLeftBottomY, Pi);
 
                             StartLeftBottomY += 2;
                             BotWantRightBlocked = 0;
@@ -583,13 +592,7 @@ namespace zadaniena5
                                     XD = StartLeftBottomX;
                                     YD = StartLeftBottomX;
 
-                                    Battlefield1[StartLeftBottomX + 1, StartLeftBottomY] = Pi;
-                                    Battlefield2[StartLeftBottomX + 1, StartLeftBottomY] = Pi.Character;
-                                    Battlefield1[StartLeftBottomX, StartLeftBottomY].ConnectLowerPiece(Battlefield1[StartLeftBottomX + 2, StartLeftBottomY]);
-                                    Battlefield1[StartLeftBottomX + 2, StartLeftBottomY].ConnectUpperPiece(Battlefield1[StartLeftBottomX, StartLeftBottomY]);
-
-                                    Battlefield1[StartLeftBottomX, StartLeftBottomY].ConnectEdges(Battlefield1[StartLeftBottomX + 2, StartLeftBottomY].IsEdge1, Battlefield1[StartLeftBottomX + 2, StartLeftBottomY].IsEdge2);
-                                    Battlefield1[StartLeftBottomX + 2, StartLeftBottomY].ConnectEdges(Battlefield1[StartLeftBottomX, StartLeftBottomY].IsEdge1, Battlefield1[StartLeftBottomX, StartLeftBottomY].IsEdge2);
+                                    MoveBotDown(StartLeftBottomX, StartLeftBottomY, Pi);
 
                                     StartLeftBottomX += 2;
                                 }
@@ -623,13 +626,8 @@ namespace zadaniena5
                                 XD = StartRightBottomX;
                                 YD = StartRightBottomX;
 
-                                Battlefield1[StartRightBottomX, StartRightBottomX - 1] = Pi;
-                                Battlefield2[StartRightBottomX, StartRightBottomY - 1] = Pi.Character;
-                                Battlefield1[StartRightBottomX, StartRightBottomY].ConnectRightPiece(Battlefield1[StartRightBottomX, StartRightBottomY - 2]);
-                                Battlefield1[StartRightBottomX, StartRightBottomY - 2].ConnectLeftPiece(Battlefield1[StartRightBottomX, StartRightBottomY]);
+                                MoveBotLeft(StartRightBottomX, StartRightBottomY, Pi);
 
-                                Battlefield1[StartRightBottomX, StartRightBottomY].ConnectEdges(Battlefield1[StartRightBottomX, StartRightBottomY - 2].IsEdge1, Battlefield1[StartRightBottomX, StartRightBottomY - 2].IsEdge2);
-                                Battlefield1[StartRightBottomX, StartRightBottomY - 2].ConnectEdges(Battlefield1[StartRightBottomX, StartRightBottomY].IsEdge1, Battlefield1[StartRightBottomX, StartRightBottomY].IsEdge2);
                                 StartRightBottomY -= 2;
                             }
                             else if (Battlefield1[StartRightBottomX, StartRightBottomY - 1] != null)
@@ -657,13 +655,7 @@ namespace zadaniena5
                                         XD = StartLeftBottomX;
                                         YD = StartLeftBottomY;
 
-                                        Battlefield1[StartLeftBottomX, StartLeftBottomY + 1] = Pi;
-                                        Battlefield2[StartLeftBottomX, StartLeftBottomY + 1] = Pi.Character;
-                                        Battlefield1[StartLeftBottomX, StartLeftBottomY].ConnectLeftPiece(Battlefield1[StartLeftBottomX, StartLeftBottomY + 2]);
-                                        Battlefield1[StartLeftBottomX, StartLeftBottomY + 2].ConnectRightPiece(Battlefield1[StartLeftBottomX, StartLeftBottomY]);
-
-                                        Battlefield1[StartLeftBottomX, StartLeftBottomY].ConnectEdges(Battlefield1[StartLeftBottomX, StartLeftBottomY - 2].IsEdge1, Battlefield1[StartLeftBottomX, StartLeftBottomY - 2].IsEdge2);
-                                        Battlefield1[StartLeftBottomX, StartLeftBottomY - 2].ConnectEdges(Battlefield1[StartLeftBottomY, StartLeftBottomY].IsEdge1, Battlefield1[StartLeftBottomX, StartLeftBottomY].IsEdge2);
+                                        MoveBotRight(StartLeftBottomX, StartLeftBottomY, Pi);
 
                                         StartLeftBottomY += 2;
                                         hop = 0;
@@ -676,13 +668,8 @@ namespace zadaniena5
                                         XD = StartRightBottomX;
                                         YD = StartRightBottomY;
 
-                                        Battlefield1[StartRightBottomX + 1, StartRightBottomY] = Pi;
-                                        Battlefield2[StartRightBottomX + 1, StartRightBottomY] = Pi.Character;
-                                        Battlefield1[StartRightBottomX, StartRightBottomY].ConnectLowerPiece(Battlefield1[StartRightBottomX + 2, StartRightBottomY]);
-                                        Battlefield1[StartRightBottomX + 2, StartRightBottomY].ConnectUpperPiece(Battlefield1[StartRightBottomX, StartRightBottomY]);
+                                        MoveBotDown(StartRightBottomX, StartRightBottomY, Pi);
 
-                                        Battlefield1[StartRightBottomX, StartRightBottomY].ConnectEdges(Battlefield1[StartRightBottomX + 2, StartRightBottomY].IsEdge1, Battlefield1[StartRightBottomX + 2, StartRightBottomY].IsEdge2);
-                                        Battlefield1[StartRightBottomX + 2, StartRightBottomY].ConnectEdges(Battlefield1[StartRightBottomX, StartRightBottomY].IsEdge1, Battlefield1[StartRightBottomX, StartRightBottomY].IsEdge2);
                                         StartRightBottomX += 2;
                                     }
                                 }
@@ -699,13 +686,8 @@ namespace zadaniena5
                             XD = StartRightTopX;
                             YD = StartRightTopY;
 
-                            Battlefield1[StartRightTopX, StartRightTopY - 1] = Pi;
-                            Battlefield2[StartRightTopX, StartRightTopY - 1] = Pi.Character;
-                            Battlefield1[StartRightTopX, StartRightTopY].ConnectLeftPiece(Battlefield1[StartRightTopX, StartRightTopY - 2]);
-                            Battlefield1[StartRightTopX, StartRightTopY - 2].ConnectRightPiece(Battlefield1[StartRightTopX, StartRightTopY]);
+                            MoveBotLeft(StartRightTopX, StartRightTopY, Pi);
 
-                            Battlefield1[StartRightTopX, StartRightTopY].ConnectEdges(Battlefield1[StartRightTopX, StartRightTopY - 2].IsEdge1, Battlefield1[StartRightTopX, StartRightTopY - 2].IsEdge2);
-                            Battlefield1[StartRightTopX, StartRightTopY - 2].ConnectEdges(Battlefield1[StartRightTopX, StartRightTopY].IsEdge1, Battlefield1[StartRightTopX, StartRightTopY].IsEdge2);
                             StartRightTopY -= 2;
                             BotWantLeftBlocked = 0;
                         }
@@ -720,13 +702,7 @@ namespace zadaniena5
                                     XD = StartRightTopX;
                                     YD = StartRightTopY;
 
-                                    Battlefield1[StartRightTopX - 1, StartRightTopY] = Pi;
-                                    Battlefield2[StartRightTopX - 1, StartRightTopY] = Pi.Character;
-                                    Battlefield1[StartRightTopX, StartRightTopY].ConnectUpperPiece(Battlefield1[StartRightTopX - 2, StartRightTopY]);
-                                    Battlefield1[StartRightTopX - 2, StartRightTopY].ConnectLowerPiece(Battlefield1[StartRightTopX, StartRightTopY]);
-
-                                    Battlefield1[StartRightTopX, StartRightTopY].ConnectEdges(Battlefield1[StartRightTopX - 2, StartRightTopY].IsEdge1, Battlefield1[StartRightTopX - 2, StartRightTopY].IsEdge2);
-                                    Battlefield1[StartRightTopX - 2, StartRightTopY].ConnectEdges(Battlefield1[StartRightTopX, StartRightTopY].IsEdge1, Battlefield1[StartRightTopX, StartRightTopY].IsEdge2);
+                                    MoveBotUp(StartRightTopX, StartRightTopY, Pi);
 
                                     StartRightTopX -= 2;
                                 }
@@ -760,13 +736,8 @@ namespace zadaniena5
                                 XD = StartLeftTopX;
                                 YD = StartLeftTopY;
 
-                                Battlefield1[StartLeftTopX, StartLeftTopY + 1] = Pi;
-                                Battlefield2[StartLeftTopX, StartLeftTopY + 1] = Pi.Character;
-                                Battlefield1[StartLeftTopX, StartLeftTopY].ConnectRightPiece(Battlefield1[StartLeftTopX, StartLeftTopY + 2]);
-                                Battlefield1[StartLeftTopX, StartLeftTopY + 2].ConnectLeftPiece(Battlefield1[StartLeftTopX, StartLeftTopY]);
+                                MoveBotRight(StartLeftTopX, StartLeftTopY, Pi);
 
-                                Battlefield1[StartLeftTopX, StartLeftTopY].ConnectEdges(Battlefield1[StartLeftTopX, StartLeftTopY + 2].IsEdge1, Battlefield1[StartLeftTopX, StartLeftTopY + 2].IsEdge2);
-                                Battlefield1[StartLeftTopX, StartLeftTopY + 2].ConnectEdges(Battlefield1[StartLeftTopX, StartLeftTopY].IsEdge1, Battlefield1[StartLeftTopX, StartLeftTopY].IsEdge2);
                                 StartLeftTopY += 2;
                             }
                             else if (Battlefield1[StartLeftTopX, StartLeftTopY + 1] != null)
@@ -795,13 +766,7 @@ namespace zadaniena5
                                         XD = StartRightTopX;
                                         YD = StartRightTopX;
 
-                                        Battlefield1[StartRightTopX, StartRightTopY - 1] = Pi;
-                                        Battlefield2[StartRightTopX, StartRightTopY - 1] = Pi.Character;
-                                        Battlefield1[StartRightTopX, StartRightTopY].ConnectLeftPiece(Battlefield1[StartRightTopX, StartRightTopY - 2]);
-                                        Battlefield1[StartRightTopX, StartRightTopY - 2].ConnectRightPiece(Battlefield1[StartRightTopX, StartRightTopY]);
-
-                                        Battlefield1[StartRightTopX, StartRightTopY].ConnectEdges(Battlefield1[StartRightTopX, StartRightTopY - 2].IsEdge1, Battlefield1[StartRightTopX, StartRightTopY - 2].IsEdge2);
-                                        Battlefield1[StartRightTopX, StartRightTopY - 2].ConnectEdges(Battlefield1[StartRightTopX, StartRightTopY].IsEdge1, Battlefield1[StartRightTopX, StartRightTopY].IsEdge2);
+                                        MoveBotLeft(StartRightTopX, StartRightTopY, Pi);
 
                                         StartRightTopY -= 2;
                                         hop = 0;
@@ -816,24 +781,26 @@ namespace zadaniena5
                                             XD = StartLeftTopX;
                                             YD = StartLeftTopY;
 
-                                            Battlefield1[StartLeftTopX - 1, StartLeftTopY] = Pi;
-                                            Battlefield2[StartLeftTopX - 1, StartLeftTopY] = Pi.Character;
-                                            Battlefield1[StartLeftTopX, StartLeftTopY].ConnectUpperPiece(Battlefield1[StartLeftTopX - 2, StartLeftTopY]);
-                                            Battlefield1[StartLeftTopX - 2, StartLeftTopY].ConnectLowerPiece(Battlefield1[StartLeftTopX, StartLeftTopY]);
+                                            MoveBotUp(StartLeftTopX, StartLeftTopY, Pi);
 
-                                            Battlefield1[StartLeftTopX, StartLeftTopY].ConnectEdges(Battlefield1[StartLeftTopX - 2, StartLeftTopY].IsEdge1, Battlefield1[StartLeftTopX - 2, StartLeftTopY].IsEdge2);
-                                            Battlefield1[StartLeftTopX - 2, StartLeftTopY].ConnectEdges(Battlefield1[StartLeftTopX, StartLeftTopY].IsEdge1, Battlefield1[StartLeftTopX, StartLeftTopY].IsEdge2);
                                             StartLeftTopX -= 2;
                                         }
                                     }
                                     else
                                     {
-                                        
+                                        if (Battlefield1[StartLeftBottomX + 1, StartLeftBottomY] == null)
+                                        {
+                                            XD = StartLeftBottomX;
+                                            YD = StartLeftBottomY;
+
+                                            MoveBotDown(StartLeftBottomX, StartLeftBottomY, Pi);
+
+                                            StartLeftBottomX += 2;
+                                        }
                                     }
                                 }
                             }
                         }
-
                     }
                 }  
                 if (PlayerStartedPosition == "RD") //jeśli zajął prawo dół
